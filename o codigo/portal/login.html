@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Área do Aluno • O CÓDIGO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0d; --panel:#111216; --line:rgba(255,255,255,.07);
+      --text:#ececf1; --muted:#9aa0ad;
+      --gold:#d8b25c; --gold-2:#f0cc74; --gold-3:#a38439;
+      --radius:16px; --shadow:0 12px 28px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font:400 15px/1.6 Inter,system-ui;color:var(--text);
+      background:radial-gradient(1200px 600px at 50% -300px,rgba(216,178,92,.06),transparent 60%),var(--bg);}
+    .wrap{min-height:100dvh;display:grid;place-items:center;padding:24px}
+    .card{width:100%;max-width:480px;background:linear-gradient(180deg,#111318,#0b0c10);
+      border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+    .brand{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+    .logo{width:26px;height:26px;display:grid;place-items:center;border:1px solid var(--gold);
+      border-radius:8px;color:var(--gold)}
+    h1{margin:0 0 16px;font-size:22px}
+    .tabs{display:flex;gap:8px;margin-bottom:12px}
+    .tab{flex:1;text-align:center;padding:10px;border-radius:12px;cursor:pointer;border:1px solid var(--line);background:#151821}
+    .tab.active{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#111;font-weight:800}
+    form{display:grid;gap:12px}
+    label{font-size:12px;color:var(--muted)}
+    input{width:100%;background:#151822;color:#e8ebf1;border:1px solid rgba(255,255,255,.07);
+      border-radius:10px;padding:12px}
+    .btn{appearance:none;border:0;padding:12px 16px;border-radius:12px;font-weight:800;cursor:pointer}
+    .btn-gold{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#111}
+    .btn-ghost{background:#151821;color:#e6e6eb;border:1px solid var(--line)}
+    .err{color:#ffb0b0;font-size:13px;min-height:18px}
+    @media(max-width:560px){.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="brand"><div class="logo">◆</div><div><strong>Área do Aluno</strong><br><small class="muted">O CÓDIGO</small></div></div>
+      <h1 id="title">Entrar</h1>
+
+      <div class="tabs">
+        <button class="tab active" id="tab-login">Entrar</button>
+        <button class="tab" id="tab-sign">Criar conta</button>
+      </div>
+
+      <!-- Login -->
+      <form id="form-login" onsubmit="return false">
+        <div class="err" id="err-login"></div>
+        <div>
+          <label>Email</label>
+          <input id="login-email" type="email" placeholder="seu@email.com" required>
+        </div>
+        <div>
+          <label>Palavra-passe</label>
+          <input id="login-pass" type="password" placeholder="********" required>
+        </div>
+        <button class="btn btn-gold" onclick="Auth.signIn()">Entrar</button>
+      </form>
+
+      <!-- Cadastro -->
+      <form id="form-sign" style="display:none" onsubmit="return false">
+        <div class="err" id="err-sign"></div>
+        <div>
+          <label>Nome</label>
+          <input id="sign-name" type="text" placeholder="Seu nome" required>
+        </div>
+        <div>
+          <label>Email</label>
+          <input id="sign-email" type="email" placeholder="seu@email.com" required>
+        </div>
+        <div>
+          <label>Palavra-passe</label>
+          <input id="sign-pass" type="password" placeholder="mín. 6 caracteres" required>
+        </div>
+        <div>
+          <label>Confirmar</label>
+          <input id="sign-pass2" type="password" placeholder="repita a senha" required>
+        </div>
+        <button class="btn btn-gold" onclick="Auth.signUp()">Criar conta</button>
+      </form>
+
+      <div style="margin-top:14px;display:flex;gap:8px">
+        <a class="btn btn-ghost" href="../o%20codigo%20site%20oficial/landing/index.html">Voltar ao site</a>
+        <a class="btn btn-ghost" href="../inscrever/index.html">Inscrever-se</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="./auth.js"></script>
+  <script>
+    // Tabs toggle
+    const tl=document.getElementById('tab-login'), ts=document.getElementById('tab-sign');
+    const fl=document.getElementById('form-login'), fs=document.getElementById('form-sign');
+    function setTab(l){tl.classList.toggle('active',l);ts.classList.toggle('active',!l);
+      fl.style.display=l?'':'none';fs.style.display=l?'none':'';document.getElementById('title').textContent=l?'Entrar':'Criar conta';}
+    tl.onclick=()=>setTab(true); ts.onclick=()=>setTab(false);
+
+    // Se já autenticado → vai direto para portal
+    if(Auth.currentUser()) location.href='./dashboard.html';
+  </script>
+</body>
+</html>

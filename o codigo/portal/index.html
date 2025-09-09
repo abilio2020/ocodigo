@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Quântico • SPA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0d;         /* fundo */
+      --panel:#111216;      /* cartões */
+      --panel-2:#0e0f13;    /* sidebar/top */
+      --line:rgba(255,255,255,.06);
+      --muted:#9aa0ad;
+      --text:#ececf1;
+      --gold:#d8b25c;       /* dourado principal */
+      --gold-2:#f0cc74;     /* dourado claro */
+      --gold-3:#a38439;     /* dourado escuro */
+      --ok:#9af0c2;
+      --warn:#f2b577;
+      --radius:16px;
+      --shadow:0 12px 28px rgba(0,0,0,.45);
+      --shadow-2:0 10px 20px rgba(216,178,92,.18);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font:400 15px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif; color:var(--text); background:var(--bg);}
+
+    /* ===== Layout ===== */
+    .app{display:grid; grid-template-columns:260px 1fr; min-height:100vh}
+    aside{background:linear-gradient(180deg,#0e0f13,#0b0c10); border-right:1px solid var(--line); position:sticky; top:0; align-self:start; height:100vh}
+    header{position:sticky; top:0; z-index:10; background:rgba(14,15,19,.86); backdrop-filter:saturate(125%) blur(6px); border-bottom:1px solid var(--line)}
+    main{padding:24px; max-width:1240px; width:100%; margin:0 auto}
+
+    /* ===== Sidebar ===== */
+    .brand{display:flex; align-items:center; gap:10px; padding:18px 18px}
+    .logo{width:28px; height:28px; border-radius:8px; border:1px solid var(--gold-3); display:grid; place-items:center; color:var(--gold)}
+    .brand .meta{font-weight:800; letter-spacing:.3px}
+
+    nav.side{padding:8px}
+    .tab{display:flex; align-items:center; gap:10px; padding:12px 12px; margin:6px 8px; border-radius:12px; color:#d8dbe6; text-decoration:none; border:1px solid transparent}
+    .tab span.ico{width:22px; height:22px; display:grid; place-items:center; border-radius:6px; background:#15161b; color:var(--gold)}
+    .tab.active{background:linear-gradient(180deg,#11131a,#0d0f14); border-color:rgba(255,255,255,.06); box-shadow:inset 0 0 0 1px rgba(216,178,92,.15)}
+    .side-bottom{margin-top:auto; padding:12px}
+
+    /* ===== Topbar ===== */
+    .top{display:flex; align-items:center; gap:12px; padding:14px 20px}
+    .search{flex:1; position:relative}
+    .search input{width:100%; background:#151821; color:#e8ebf1; border:1px solid rgba(255,255,255,.06); border-radius:999px; padding:10px 14px 10px 42px; outline:none}
+    .search .hint{position:absolute; left:12px; top:50%; transform:translateY(-50%); opacity:.6}
+    .user{display:flex; align-items:center; gap:8px; background:#161820; border:1px solid var(--line); padding:6px 10px; border-radius:999px}
+    .badge{background:linear-gradient(180deg, var(--gold-2), var(--gold)); color:#111; border-radius:999px; padding:2px 8px; font-size:12px; font-weight:800; border:1px solid var(--gold-3)}
+
+    /* ===== Commons ===== */
+    .h2{font-size:20px; margin:0 0 14px}
+    .muted{color:var(--muted)}
+    .grid{display:grid; gap:16px}
+    .grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card{background:linear-gradient(180deg,#111318,#0b0c10); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow);}
+    .panel{padding:16px}
+    .stat{display:flex; justify-content:space-between; align-items:center}
+    .progress{height:7px; background:#161922; border-radius:999px; overflow:hidden}
+    .progress > i{display:block; height:100%; background:linear-gradient(90deg,var(--gold-2),var(--gold)); width:40%}
+
+    .btn{appearance:none; border:0; padding:10px 14px; border-radius:12px; font-weight:700; cursor:pointer}
+    .btn-gold{background:linear-gradient(180deg,var(--gold-2),var(--gold)); color:#111; box-shadow:var(--shadow-2)}
+    .btn-ghost{background:#161820; color:#e6e6eb; border:1px solid var(--line)}
+
+    .thumb{background:linear-gradient(180deg,#2b2b2f,#1b1c20); border:1px solid rgba(255,255,255,.05); border-radius:12px; height:160px; display:grid; place-items:center; position:relative}
+    .thumb .play{width:56px; height:56px; border-radius:999px; display:grid; place-items:center; background:#17181f; border:1px solid rgba(255,255,255,.06); color:var(--gold)}
+
+    .item{display:flex; flex-direction:column; gap:10px}
+    .item h4{margin:0; font-size:15px}
+    .meta{display:flex; gap:12px; align-items:center; color:#cfd3dc; font-size:13px}
+
+    /* ===== Views (tabs) ===== */
+    .view{display:none; animation:fade .24s ease}
+    .view.active{display:block}
+    @keyframes fade{from{opacity:.6; transform:translateY(4px)} to{opacity:1; transform:none}}
+
+    /* ===== Dashboard specific ===== */
+    .stats .panel{display:grid; gap:10px}
+
+    /* ===== Biblioteca cards ===== */
+    .resource{display:grid; grid-template-columns:80px 1fr auto; align-items:center; gap:12px; padding:12px}
+    .resource .ico{width:60px; height:60px; border-radius:14px; display:grid; place-items:center; background:#17181f; border:1px solid var(--line)}
+
+    /* ===== Responsividade ===== */
+    @media (max-width: 1200px){
+      .grid.cols-4{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+    @media (max-width: 980px){
+      .app{grid-template-columns:1fr}
+      aside{position:fixed; inset:0 40% 0 0; transform:translateX(-100%); transition:.25s ease; height:100vh}
+      aside.open{transform:none; box-shadow:40vw 0 0 rgba(0,0,0,.45)}
+      .top{gap:8px}
+      .btn-toggle{display:inline-flex}
+    }
+    @media (min-width: 981px){ .btn-toggle{display:none} }
+
+    @media (max-width: 820px){
+      .grid.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .resource{grid-template-columns:1fr; text-align:center}
+    }
+    @media (max-width: 560px){
+      main{padding:18px}
+      .grid.cols-4,.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}
+      .thumb{height:160px}
+      .thumb .play{width:52px; height:52px}
+      .brand{padding:16px}
+    }
+  </style>
+</head>
+<body>
+  <script src="./auth.js"></script>
+<script>
+  if (!Auth.currentUser()) location.href = './login.html';
+</script>
+
+  <div class="app">
+    <!-- ===== Sidebar ===== -->
+    <aside id="side">
+      <div class="brand">
+        <div class="logo">⚡</div>
+        <div class="meta">Portal Quântico<br><small class="muted">Venda Quântica</small></div>
+      </div>
+      <nav class="side" id="tabs">
+        <a class="tab active" data-view="dashboard"><span class="ico">🏠</span>Dashboard</a>
+        <a class="tab" data-view="video"><span class="ico">🎬</span>Vídeo-aulas</a>
+        <a class="tab" data-view="biblioteca"><span class="ico">📚</span>Biblioteca</a>
+        <a class="tab" data-view="conquistas"><span class="ico">🏅</span>Conquistas</a>
+        <a class="tab" data-view="progresso"><span class="ico">📈</span>Progresso</a>
+        <a class="tab" data-view="comunidade"><span class="ico">💬</span>Comunidade</a>
+      </nav>
+      <div class="side-bottom">
+        <a class="tab" data-view="config"><span class="ico">⚙️</span>Configurações</a>
+        <!-- CORRIGIDO: faz logout real -->
+        <a class="tab" href="#" onclick="Auth.signOut(); return false;"><span class="ico">⎋</span>Sair</a>
+      </div>
+    </aside>
+
+    <div>
+      <!-- ===== Topbar ===== -->
+      <header>
+        <div class="top">
+          <button class="btn btn-ghost btn-toggle" onclick="toggleSide()">☰</button>
+          <div class="search"><span class="hint">🔎</span><input placeholder="Buscar cursos, vídeos… (Ctrl+/)"></div>
+          <!-- CORRIGIDO: badge mostra iniciais do utilizador -->
+          <div class="user"><div class="badge">Nível 2</div><span class="muted" id="user-badge">UD</span></div>
+        </div>
+      </header>
+
+      <!-- ===== Main (views) ===== -->
+      <main>
+        <!-- DASHBOARD -->
+        <section class="view active" id="view-dashboard" aria-label="Dashboard">
+          <!-- CORRIGIDO: mostra primeiro nome -->
+          <h2 class="h2">Bem-vindo de volta, <span id="welcome-name">Utilizador</span>! 🚀</h2>
+          <p class="muted" style="margin-top:-8px">Continue a sua jornada de transformação quântica</p>
+
+          <!-- Stats -->
+          <div class="grid cols-4 stats" style="margin:16px 0 22px">
+            <div class="card panel">
+              <div class="stat"><strong>Progresso do Curso</strong><span class="muted">8/24</span></div>
+              <div class="progress"><i style="width:33%"></i></div>
+            </div>
+            <div class="card panel">
+              <div class="stat"><strong>Tempo Total</strong><span class="muted">7h30</span></div>
+              <div class="muted">+45min esta semana</div>
+            </div>
+            <div class="card panel">
+              <div class="stat"><strong>Sequência</strong><span class="muted">7 dias</span></div>
+              <div class="muted">Continue assim!</div>
+            </div>
+            <div class="card panel">
+              <div class="stat"><strong>XP Total</strong><span class="muted">1250</span></div>
+              <div class="progress"><i style="width:75%"></i></div>
+            </div>
+          </div>
+
+          <!-- Vídeos em destaque -->
+          <h3 style="margin:0 0 10px">Vídeo-aulas em Destaque</h3>
+          <div class="grid cols-3">
+            <article class="card panel item">
+              <div class="thumb"><div class="play">▶</div><div style="position:absolute; bottom:8px; left:12px; font-size:12px" class="muted">25:43</div></div>
+              <h4>Neurociência das Vendas</h4>
+              <div class="meta"><span>Módulo 3</span><span>1.2k visualizações</span><button class="btn btn-gold" onclick="openView('video')">Assistir</button></div>
+            </article>
+            <article class="card panel item">
+              <div class="thumb"><div class="play">▶</div><div style="position:absolute; bottom:8px; left:12px; font-size:12px" class="muted">32:15</div></div>
+              <h4>Fechamento Quântico</h4>
+              <div class="meta"><span>Módulo 4</span><span>890 visualizações</span><button class="btn btn-gold" onclick="openView('video')">Assistir</button></div>
+            </article>
+            <article class="card panel item">
+              <div class="thumb"><div class="play">▶</div><div style="position:absolute; bottom:8px; left:12px; font-size:12px" class="muted">18:30</div></div>
+              <h4>Mentalidade de Abundância</h4>
+              <div class="meta"><span>Módulo 2</span><span>1.5k visualizações</span><button class="btn btn-gold" onclick="openView('video')">Assistir</button></div>
+            </article>
+          </div>
+
+          <!-- Biblioteca Digital (atalho) -->
+          <h3 style="margin:18px 0 10px">Biblioteca Digital</h3>
+          <div class="grid cols-3">
+            <div class="card resource">
+              <div class="ico">📘</div>
+              <div>
+                <div style="font-weight:700">Manual da Venda Quântica</div>
+                <div class="muted">por Pinto Samuel • 200 páginas</div>
+              </div>
+              <button class="btn btn-ghost" onclick="openView('biblioteca')">Ver</button>
+            </div>
+            <div class="card resource">
+              <div class="ico">🧠</div>
+              <div>
+                <div style="font-weight:700">Neurociência Comercial</div>
+                <div class="muted">por Pinto Samuel • 130 páginas</div>
+              </div>
+              <button class="btn btn-ghost" onclick="openView('biblioteca')">Ver</button>
+            </div>
+            <div class="card resource">
+              <div class="ico">📦</div>
+              <div>
+                <div style="font-weight:700">Kit de Templates de Vendas</div>
+                <div class="muted">50+ templates • 15.2 MB</div>
+              </div>
+              <button class="btn btn-ghost" onclick="openView('biblioteca')">Ver</button>
+            </div>
+          </div>
+
+          <!-- Ações Rápidas / Conquistas -->
+          <div class="grid cols-2" style="margin-top:18px">
+            <div class="card panel">
+              <h3 style="margin:0 0 10px">Continue Aprendendo</h3>
+              <div class="muted">Sua próxima aula recomendada</div>
+              <div class="card panel" style="margin-top:12px; display:flex; align-items:center; justify-content:space-between">
+                <div class="muted">Neurociência das Vendas • Módulo 3 • 25 min</div>
+                <button class="btn btn-gold" onclick="openView('video')">Assistir</button>
+              </div>
+            </div>
+            <div class="card panel">
+              <h3 style="margin:0 0 10px">Suas Conquistas</h3>
+              <div class="grid">
+                <div class="card panel" style="display:flex; align-items:center; justify-content:space-between"><div>Primeiro Passo</div><span class="badge">Concluído</span></div>
+                <div class="card panel" style="display:flex; align-items:center; justify-content:space-between"><div>Estudante Dedicado</div><span class="muted">7 dias consecutivos</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VÍDEO-AULAS -->
+        <section class="view" id="view-video" aria-label="Vídeo-aulas">
+          <h2 class="h2">Vídeo-aulas</h2>
+          <div class="grid cols-3">
+            <article class="card panel item">
+              <div class="thumb"><div class="play">▶</div></div>
+              <h4>Módulo 1 • Fundamentos</h4>
+              <div class="meta"><span>18:22</span><button class="btn btn-gold">Assistir</button></div>
+            </article>
+            <article class="card panel item">
+              <div class="thumb"><div class="play">▶</div></div>
+              <h4>Módulo 2 • Mentalidade de Abundância</h4>
+              <div class="meta"><span>30:04</span><button class="btn btn-gold">Assistir</button></div>
+            </article>
+            <article class="card panel item">
+              <div class="thumb"><div class="play">▶</div></div>
+              <h4>Módulo 3 • Neurociência das Vendas</h4>
+              <div class="meta"><span>25:43</span><button class="btn btn-gold">Assistir</button></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- BIBLIOTECA -->
+        <section class="view" id="view-biblioteca" aria-label="Biblioteca">
+          <h2 class="h2">Biblioteca Digital</h2>
+          <div class="grid cols-3">
+            <div class="card resource"><div class="ico">PDF</div><div><div style="font-weight:700">Manual da Venda Quântica</div><div class="muted">200 páginas • 2.5 MB</div></div><button class="btn btn-gold">Baixar</button></div>
+            <div class="card resource"><div class="ico">PDF</div><div><div style="font-weight:700">Neurociência Comercial</div><div class="muted">130 páginas • 3.1 MB</div></div><button class="btn btn-gold">Baixar</button></div>
+            <div class="card resource"><div class="ico">ZIP</div><div><div style="font-weight:700">Kit de Templates</div><div class="muted">50+ arquivos • 15.2 MB</div></div><button class="btn btn-gold">Baixar</button></div>
+          </div>
+
+          <div class="grid cols-2" style="margin-top:18px">
+            <div class="card panel">
+              <h3 style="margin:0 0 10px">Estatísticas de Download</h3>
+              <div class="grid cols-2">
+                <div class="card panel"><strong>127k</strong><div class="muted">Downloads totais</div></div>
+                <div class="card panel"><strong>4.8</strong><div class="muted">Avaliação média</div></div>
+              </div>
+            </div>
+            <div class="card panel">
+              <h3 style="margin:0 0 10px">Atividade Recente</h3>
+              <div class="grid">
+                <div class="card panel">Kit de Templates baixado • <span class="muted">há 3 horas</span></div>
+                <div class="card panel">Manual visualizado • <span class="muted">ontem</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONQUISTAS -->
+        <section class="view" id="view-conquistas" aria-label="Conquistas">
+          <h2 class="h2">Conquistas</h2>
+          <div class="grid cols-3">
+            <div class="card panel"><h4>Primeiro Passo</h4><div class="muted">Conclua a primeira aula</div></div>
+            <div class="card panel"><h4>Estudante Dedicado</h4><div class="muted">7 dias consecutivos</div></div>
+            <div class="card panel"><h4>Mestre do Fechamento</h4><div class="muted">Conclua o módulo 4</div></div>
+          </div>
+        </section>
+
+        <!-- PROGRESSO -->
+        <section class="view" id="view-progresso" aria-label="Progresso">
+          <h2 class="h2">Progresso</h2>
+          <div class="grid cols-2">
+            <div class="card panel">
+              <h4>Mapa do Curso</h4>
+              <div class="grid">
+                <div class="card panel">Módulo 1 • 100%</div>
+                <div class="card panel">Módulo 2 • 80%</div>
+                <div class="card panel">Módulo 3 • 33%</div>
+                <div class="card panel">Módulo 4 • 0%</div>
+              </div>
+            </div>
+            <div class="card panel">
+              <h4>Frequência</h4>
+              <div class="progress"><i style="width:80%"></i></div>
+              <p class="muted">Meta: ≥ 80% presença</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMUNIDADE -->
+        <section class="view" id="view-comunidade" aria-label="Comunidade">
+          <h2 class="h2">Comunidade</h2>
+          <div class="card panel">
+            <div class="grid">
+              <div class="card panel"><strong>Pergunta do dia:</strong> Qual técnica de fechamento funcionou melhor esta semana?</div>
+              <div class="card panel">Dica: Poste seus insights com a hashtag <strong>#VendaQuantica</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONFIGURAÇÕES -->
+        <section class="view" id="view-config" aria-label="Configurações">
+          <h2 class="h2">Configurações</h2>
+          <div class="grid cols-2">
+            <div class="card panel">
+              <h4>Perfil</h4>
+              <div class="grid">
+                <label class="card panel">Nome <input style="float:right" placeholder="Seu nome"></label>
+                <label class="card panel">Email <input style="float:right" placeholder="email@exemplo.com"></label>
+              </div>
+            </div>
+            <div class="card panel">
+              <h4>Notificações</h4>
+              <div class="grid">
+                <label class="card panel"><input type="checkbox" checked> Avisar novas aulas</label>
+                <label class="card panel"><input type="checkbox"> Promoções e novidades</label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Alterna sidebar no mobile
+    function toggleSide(){ document.getElementById('side').classList.toggle('open'); }
+
+    // Navegação SPA por tabs
+    const tabs = document.querySelectorAll('.tab[data-view]');
+    const views = document.querySelectorAll('.view');
+    function openView(name){
+      tabs.forEach(t=>t.classList.toggle('active', t.dataset.view===name));
+      views.forEach(v=>v.classList.toggle('active', v.id === 'view-'+name));
+      // fecha sidebar no mobile ao navegar
+      document.getElementById('side').classList.remove('open');
+      // rola ao topo do conteúdo
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    tabs.forEach(t=> t.addEventListener('click', (e)=>{ e.preventDefault(); openView(t.dataset.view); }));
+
+    // Atalho Ctrl+/ foca a pesquisa
+    document.addEventListener('keydown', e=>{
+      if((e.ctrlKey || e.metaKey) && e.key === '/'){ document.querySelector('.search input')?.focus(); e.preventDefault(); }
+    });
+
+    /* ===== NOVO: preencher nome e iniciais a partir do Auth ===== */
+    (function(){
+      const u = Auth.currentUser && Auth.currentUser();
+      if(!u) return;
+      // primeiro nome
+      const first = (u.name||u.email||'Utilizador').trim().split(/\s+/)[0];
+      const welcome = document.getElementById('welcome-name');
+      if(welcome) welcome.textContent = first;
+
+      // iniciais
+      const initials = (u.name||u.email||'U D')
+        .split('@')[0]
+        .split(/\s+|\.|_/)
+        .filter(Boolean)
+        .slice(0,2)
+        .map(s=>s[0].toUpperCase())
+        .join('');
+      const badge = document.getElementById('user-badge');
+      if(badge) badge.textContent = initials || 'UD';
+    })();
+  </script>
+</body>
+</html>

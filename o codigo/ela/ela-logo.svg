@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#F7E9B4"/>
+      <stop offset="0.45" stop-color="#E1C26A"/>
+      <stop offset="1" stop-color="#C79E44"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="24" ry="24" fill="#0b0b0d"/>
+  <!-- Triângulo invertido -->
+  <path d="M100 145 L45 55 L155 55 Z" fill="none" stroke="url(#g)" stroke-width="10" />
+  <!-- Círculo central -->
+  <circle cx="100" cy="95" r="16" fill="url(#g)" />
+</svg>

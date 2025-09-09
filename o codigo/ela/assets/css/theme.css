@@ -1,0 +1,1019 @@
+/* ====== PALETA / BASE ====== */
+
+
+:root{
+  --gold:#c9b55d;     /* dourado principal */
+  --gold-2:#d8c474;   /* variação mais clara */
+  --gold-3:#e6d692;   /* variação ainda mais clara */
+  --bg:#000000;       /* fundo */
+  --panel:#0f0f0f;    /* painéis/cartões */
+  --muted:#a69756;    /* tom secundário */
+ --page-max: 1680px;  /* 1440–1560 funciona bem; ajusta ao teu gosto */
+  --font-display:"Cinzel",serif;         
+  --font-sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+html,body{
+  background:var(--bg);
+  color:#e8e8e8;
+  font-family:var(--font-sans);
+  scroll-behavior:smooth;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+/* Tipografia de destaque */
+h1,h2,h3,h4,h5,h6,
+.display-1,.display-2,.display-3,.display-4,
+.subtitle,.brand-gold,.price,.section-title{
+  font-family:var(--font-display);
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.brand-gold{color:var(--gold)!important}
+.text-gold{color:var(--gold)!important}         /* utilitária */
+.icon-gold{color:var(--gold)!important}         /* utilitária */
+
+/* ====== NAVBAR ====== */
+.nav-border{background:#000;border-bottom:1px solid rgba(214,178,94,.15)}
+.navbar .nav-link{color:#ddd}
+.navbar .nav-link:hover{color:#fff}
+nav{background:#000!important}
+.thin-sep{height:1px;background:linear-gradient(90deg,transparent,rgba(214,178,94,.35),transparent)}
+
+/* ====== HERO ====== */
+.bg-dark-gradient{
+  background:
+    radial-gradient(90% 70% at 50% 0%,rgba(214,178,94,.06),rgba(0,0,0,0) 60%),
+    #000;
+}
+.hero{padding:120px 0 80px;position:relative;overflow:hidden}
+.hero .subtitle{font-size:clamp(20px,2.2vw,32px);color:var(--gold);letter-spacing:.5px}
+.hero::before{
+  content:"";position:absolute;inset:-20%;
+  background:radial-gradient(60% 40% at 50% 0%,rgba(214,178,94,.18),transparent 60%);
+  filter:blur(20px);pointer-events:none;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 80% at 50% 110%,rgba(0,0,0,0) 0%,rgba(0,0,0,.6) 60%);
+  pointer-events:none;
+}
+
+/* ====== LOGO ====== */
+.logo-mark{
+  width:42px;height:42px;border:2px solid var(--gold);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 1px rgba(214,178,94,.15) inset,0 6px 22px rgba(214,178,94,.18);
+}
+.logo-mark::after{content:"";width:14px;height:14px;background:var(--gold);border-radius:50%}
+
+/* ====== BOTÕES ====== */
+.btn{font-family:var(--font-sans)} /* garante fonte correta */
+.btn-gold{
+  background:linear-gradient(#E6C878,#D6B25E);
+  color:#111;font-weight:800;border:1px solid var(--gold-3);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px rgba(230,200,120,.22);
+  border-radius:14px;letter-spacing:.3px;
+}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 16px 36px rgba(230,200,120,.32)}
+.btn-outline-gold{
+  border:2px solid var(--gold);color:#fff;border-radius:14px;font-weight:700;
+}
+.btn-outline-gold:hover{background:#D6B25E;color:#111}
+
+/* ====== BLOCOS ====== */
+.section-py{padding:72px 0}
+.badge-stat{
+  background:rgba(214,178,94,.08);border:1px solid rgba(214,178,94,.25);
+  border-radius:16px;padding:18px 22px
+}
+.ticker{
+  background:linear-gradient(180deg,#3a0f0f,#2b0b0b);
+  color:#fff;border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:10px 0;font-weight:700;letter-spacing:.02em;
+}
+.strike{background:linear-gradient(180deg,rgba(214,178,94,.08),rgba(214,178,94,0));padding:50px 0;margin-top:20px}
+.strike h2{font-size:56px;color:var(--gold);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+
+/* Painéis/cartões */
+.panel,.price-card{
+  background:var(--panel);border:1px solid rgba(214,178,94,.20);
+  border-radius:18px;padding:28px;height:100%;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.panel h3,.panel h4{color:var(--gold)}
+.panel:hover,.price-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 40px rgba(214,178,94,.18),0 0 0 1px rgba(214,178,94,.28) inset;
+}
+
+/* ====== PREÇOS ====== */
+.price-card{background:linear-gradient(180deg,#101010,#0b0b0b)}
+.price-card .price{font-size:40px;font-weight:800;color:var(--gold);font-family:var(--font-display)}
+.price-card .tag{background:rgba(214,178,94,.15);color:var(--gold);padding:6px 12px;border-radius:999px;font-weight:700;font-size:12px}
+.price-card ul{list-style:none;margin:0;padding-left:0}
+.price-card li{margin:10px 0;display:flex;gap:10px;align-items:flex-start}
+.price-card li .material-icons{font-size:20px;color:var(--gold)}
+.price-card.highlight{outline:2px solid var(--gold);box-shadow:0 10px 40px rgba(214,178,94,.2)}
+
+/* ====== MENTOR ====== */
+.mentor-photo{border-radius:50%;padding:6px;background:linear-gradient(45deg,#E6C878,#D6B25E);box-shadow:0 6px 26px rgba(214,178,94,.25)}
+.mentor-photo img{border-radius:50%;display:block}
+
+/* ====== CHIPS (sem Materialize) ====== */
+.chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.4rem .8rem;border-radius:999px;
+  background:rgba(214,178,94,.08);border:1px solid rgba(214,178,94,.35);
+  color:var(--gold);font-weight:600;font-size:.9rem;
+}
+
+/* ====== FOOTER ====== */
+.footer{background:#0b0b0b;border-top:1px solid rgba(214,178,94,.15)}
+.footer .sep{height:1px;background:linear-gradient(90deg,transparent,rgba(214,178,94,.25),transparent);margin:18px 0}
+
+/* ====== EXTRA ====== */
+.max-w{max-width:760px}
+.hero-banner {
+  max-width: 420px;   /* largura máxima no desktop */
+  width: 100%;        /* ocupa sempre 100% até ao limite */
+  height: auto;       /* mantém proporção */
+  margin: 0 auto;     /* centraliza */
+  display: block;     /* garante alinhamento */
+  filter: drop-shadow(0 0 12px rgba(201,181,93,0.5)); /* brilho dourado suave */
+}
+.navbar-brand {
+  gap: 6px; /* espaço entre ícones e texto */
+}
+
+.brand-gold {
+  font-family: var(--font-display);
+  font-size: 1.4rem;   /* podes aumentar se quiser */
+  color: var(--gold);
+}
+
+.logo-icon {
+  width: 40px;   /* ajusta o tamanho da tua logo */
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .brand-gold {
+    font-size: 1.6rem;
+  }
+
+  .logo-icon {
+    width: 80px;  /* aumenta ligeiramente em ecrãs maiores */
+  }
+}
+.logo-img {
+  height: 70px;   /* ajusta altura da logo */
+  width: auto;    /* mantém proporção */
+}
+
+.logo-footer {
+  height: 150px;   /* altura maior só no footer */
+  width: auto;
+}
+/* ====== NAVBAR BRAND (logo do topo) ====== */
+.navbar-brand {
+  gap: 8px;                 /* espaço entre logo e texto (se houver) */
+  align-items: center;
+  min-height: 56px;         /* altura confortável do header */
+}
+
+.navbar-brand .logo-img {
+  height: 40px;             /* mobile */
+  width: auto;
+  display: block;
+  object-fit: contain;
+  -webkit-user-drag: none;  /* impedir arrastar no mobile */
+  user-select: none;
+  image-rendering: -webkit-optimize-contrast;
+  filter: drop-shadow(0 0 6px rgba(201,181,93,.25));
+}
+
+@media (min-width: 768px) {
+  .navbar-brand .logo-img { height: 56px; }  /* desktop */
+}
+
+@media (min-width: 1200px) {
+  .navbar-brand .logo-img { height: 64px; }  /* telas grandes */
+}
+
+/* Se o <span class="brand-gold"> estiver vazio, some visualmente */
+.navbar-brand .brand-gold:empty {
+  display: none;
+}
+/* ====== CENTRALIZAÇÃO GLOBAL & BLOQUEIO DE MOVIMENTO ====== */
+
+/* Evita qualquer scroll lateral e micro saltos */
+html, body { overflow-x: hidden; }
+
+/* Largura máxima do site toda centrada */
+:root { --page-max: 1200px; } /* ajusta se precisares */
+body {
+  margin: 0 auto;                 /* centra o conteúdo do body */
+  max-width: var(--page-max);     /* limita a largura total */
+}
+
+/* Garante containers sempre centrados e com a mesma largura máxima */
+.container, .container-sm, .container-md, .container-lg,
+.container-xl, .container-xxl {
+  max-width: var(--page-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Navbar: evita que a marca “ande” quando o menu abre/fecha */
+.navbar .container { position: relative; }
+.navbar-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  gap: 8px;
+  align-items: center;
+  min-height: 56px;
+}
+
+.navbar-brand .logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  user-select: none;
+  image-rendering: -webkit-optimize-contrast;
+  filter: drop-shadow(0 0 6px rgba(201,181,93,.25));
+}
+@media (min-width: 768px)  { .navbar-brand .logo-img { height: 56px; } }
+@media (min-width: 1200px) { .navbar-brand .logo-img { height: 64px; } }
+
+/* Mantém o hero e secções alinhados e centrados */
+.hero, .section-py, .footer {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Desativa movimentos de hover nos cartões (100% estático) */
+.panel:hover, .price-card:hover {
+  transform: none !important;
+  box-shadow: 0 12px 40px rgba(214,178,94,.18), 0 0 0 1px rgba(214,178,94,.28) inset;
+}
+
+/* Botões e elementos chave sem animações de deslocamento */
+.logo-img, .navbar, .hero, .panel, .price-card, .footer {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Responsivo: tipografia/espacamentos seguros no mobile */
+@media (max-width: 575.98px) {
+  .hero { padding: 88px 0 48px; }
+  .display-4 { font-size: clamp(32px, 9vw, 44px); }
+  .hero .subtitle { font-size: clamp(16px, 4.6vw, 22px); }
+  .section-py { padding: 56px 0; }
+  .panel, .price-card { padding: 22px; border-radius: 16px; }
+  .price-card .price { font-size: clamp(28px, 8.2vw, 40px); }
+}
+/* ===== Perfil / Herói reduzido ===== */
+.profile-card{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  max-width:980px;
+  margin:0 auto;
+  padding:32px 40px;
+  border-radius:16px;
+  background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.45));
+  border:1px solid rgba(201,181,93,.22);           /* usa o dourado */
+  box-shadow:0 6px 26px rgba(0,0,0,.55),
+             inset 0 0 0 1px rgba(201,181,93,.08);
+}
+
+/* Logomarca redonda */
+.logo-circle{
+  flex-shrink:0;
+  width:clamp(120px, 20vw, 180px);
+  height:auto;
+  border-radius:50%;
+  outline:4px solid var(--gold);
+  outline-offset:6px;
+  filter:drop-shadow(0 0 10px rgba(201,181,93,.25));
+  -webkit-user-drag:none;
+  user-select:none;
+}
+
+/* Conteúdos */
+.profile-content h1{
+  margin:0 0 6px 0;
+  font-family:var(--font-display);
+  font-weight:800;
+  letter-spacing:.02em;
+  color:#fff;
+  font-size:clamp(1.6rem, 2.2vw, 2.2rem);
+}
+.profile-content h2{
+  margin:0 0 14px 0;
+  font-family:var(--font-display);
+  color:var(--gold);
+  font-weight:700;
+  font-size:clamp(1.05rem, 1.6vw, 1.25rem);
+}
+.profile-content p{
+  color:#d2d2d2;
+  line-height:1.6;
+  margin:0 0 14px 0;
+  max-width:56ch;
+}
+
+/* Badges */
+.badges{display:flex;flex-wrap:wrap;gap:10px}
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background:var(--gold);
+  color:#111;
+  font-weight:700;
+  font-size:.9rem;
+  letter-spacing:.01em;
+  box-shadow:0 6px 18px rgba(201,181,93,.25);
+  border:1px solid var(--gold-3);
+}
+
+/* Responsivo */
+@media (max-width: 768px){
+  .profile-card{
+    flex-direction:column;
+    text-align:center;
+    gap:20px;
+    padding:26px 20px;
+  }
+  .profile-content p{max-width:100%}
+}
+/* ===== Ajustes finos: bloco "Conheça Seu Mentor" ===== */
+
+/* Container visual do card */
+.profile-card{
+  max-width: 1100px;                 /* largura controlada */
+  margin-inline: auto;               /* centraliza */
+  padding: 28px 36px;                /* respira melhor */
+  border-radius: 14px;
+  background: radial-gradient(120% 90% at 10% 10%, rgba(201,181,93,.08) 0%, rgba(0,0,0,.45) 60%) ,
+              linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.45));
+  border: 1px solid rgba(201,181,93,.20);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.55),
+    inset 0 0 0 1px rgba(201,181,93,.08);
+  gap: 26px;                          /* espaço entre logo e textos */
+}
+
+/* Título e subtítulo dentro do card */
+.profile-content h1{
+  margin: 0 0 8px 0;
+  font-size: clamp(1.6rem, 2.3vw, 2.3rem);  /* ligeiro ajuste no tamanho */
+}
+.profile-content h2{
+  margin: 0 0 16px 0;
+  font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+  letter-spacing: .02em;
+}
+
+/* Parágrafo */
+.profile-content p{
+  margin: 0 0 16px 0;
+  max-width: 62ch;                   /* linha mais confortável */
+  color: #ddd;
+}
+
+/* Logotipo redondo à esquerda */
+.logo-circle{
+  width: clamp(140px, 22vw, 200px);  /* reduz um pouco no desktop */
+  height: auto;
+  border-radius: 50%;
+  outline: 4px solid var(--gold);
+  outline-offset: 6px;
+  filter: drop-shadow(0 0 10px rgba(201,181,93,.25));
+  -webkit-user-drag: none;
+  user-select: none;
+  object-fit: contain;
+}
+
+/* Badges (pílulas) */
+.badges{gap: 10px}
+.badge{
+  background: rgba(201,181,93,.14); /* menos “cheio” que o dourado sólido */
+  color: var(--gold);
+  border: 1px solid rgba(201,181,93,.35);
+  padding: 9px 14px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  box-shadow: 0 6px 16px rgba(201,181,93,.15);
+}
+
+/* Espaços do título de seção (se estiver com classe .section-title) */
+.section-title{
+  margin-bottom: 18px;
+}
+
+/* Responsivo: empilha e centraliza em telas menores */
+@media (max-width: 992px){
+  .profile-card{
+    padding: 24px 22px;
+    gap: 20px;
+  }
+}
+@media (max-width: 768px){
+  .profile-card{
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-content p{max-width: 100%}
+  .badges{justify-content: center}
+}
+.profile-card{
+  display: flex;
+  align-items: center;
+  gap: 40px; /* aumenta a separação entre bola e texto */
+}
+.profile-card{
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+}
+
+.profile-card::before{
+  content: "";
+  width: 2px;
+  height: 70%;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  position: absolute;
+  left: 240px;  /* ajusta consoante o tamanho da bola */
+  top: 15%;
+  border-radius: 2px;
+  opacity: .6;
+}
+/* ====== MENTOR (espaço + divisor elegante) ====== */
+.mentor .panel{
+  padding: 28px 32px;
+}
+
+.mentor .mentor-photo{
+  width: clamp(180px, 26vw, 260px);
+  height: clamp(180px, 26vw, 260px);
+}
+
+.mentor .mentor-photo img{
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+}
+
+/* coluna do texto com separador à esquerda */
+.mentor .col-md-9{
+  position: relative;
+  padding-left: clamp(16px, 3.2vw, 40px);   /* espaço entre a bola e o texto */
+}
+
+.mentor .col-md-9::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8%;
+  bottom: 8%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  opacity: .55;
+  border-radius: 2px;
+}
+
+/* responsivo: em mobile não mostra a linha e remove o padding extra */
+@media (max-width: 767.98px){
+  .mentor .col-md-9{
+    padding-left: 0;
+  }
+  .mentor .col-md-9::before{
+    display: none;
+  }
+}
+/* ====== MENTOR (espaço + divisor elegante) ====== */
+.mentor .panel{
+  padding: 28px 32px;
+}
+
+.mentor .mentor-photo{
+  width: clamp(180px, 26vw, 260px);
+  height: clamp(180px, 26vw, 260px);
+}
+
+.mentor .mentor-photo img{
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+}
+
+/* coluna do texto com separador à esquerda */
+.mentor .col-md-9{
+  position: relative;
+  padding-left: clamp(16px, 3.2vw, 40px);   /* espaço entre a bola e o texto */
+}
+
+.mentor .col-md-9::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8%;
+  bottom: 8%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  opacity: .55;
+  border-radius: 2px;
+}
+
+/* responsivo: em mobile não mostra a linha e remove o padding extra */
+@media (max-width: 767.98px){
+  .mentor .col-md-9{
+    padding-left: 0;
+  }
+  .mentor .col-md-9::before{
+    display: none;
+  }
+}
+/* ===== Ajuste do Logo na Navbar ===== */
+.navbar .navbar-brand .logo-img {
+  height: 42px;              /* controla altura */
+  object-fit: contain;
+  display: block;
+  margin-top: 2px;           /* empurra ligeiramente para baixo */
+  margin-bottom: 2px;        /* dá espaço em baixo */
+}
+.footer {
+  background: #000;       /* fundo preto total */
+  width: 100%;            /* ocupa toda largura */
+  padding: 40px 0;
+}
+
+.footer .logo-footer {
+  height: 55px;
+}
+
+.footer .sep {
+  border-color: #bfa046;
+  opacity: 0.6;
+}
+/* --- HERO: trazer o conteúdo para cima do overlay --- */
+.hero > * { 
+  position: relative; 
+  z-index: 2; 
+}
+
+/* reduzir a “camada escura” do hero */
+.hero::before{
+  /* mantém o mesmo desenho, só reduz a força */
+  background: radial-gradient(60% 40% at 50% 0%, rgba(214,178,94,.12), transparent 60%);
+}
+.hero::after{
+  /* diminui a opacidade do véu preto */
+  background: radial-gradient(120% 80% at 50% 110%, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 60%);
+}
+
+/* --- tamanho e nitidez da arte do hero --- */
+.hero-banner{
+  max-width: 820px;      /* <— aumente se quiser mais impacto (750–900px) */
+  width: min(90vw, 820px);
+  margin: 0 auto 20px;
+  height: auto;
+  display: block;
+  filter: none;          /* remove qualquer escurecimento */
+  opacity: 1;
+}
+
+/* espaçamento do topo do hero (por causa da navbar fixa) */
+header.hero{
+  padding: 140px 0 80px;  /* sobe/desce conforme o gosto */
+}
+
+/* responsivo */
+@media (max-width: 768px){
+  .hero-banner{
+    max-width: 92vw;     /* ocupa melhor no mobile */
+  }
+  header.hero{
+    padding: 110px 0 60px;
+  }
+}
+
+.hero-banner {
+  max-width: 820px;
+  width: min(90vw, 820px);
+  margin: 0 auto 20px;
+  display: block;
+  height: auto;
+
+  /* mescla o preto da imagem com o fundo */
+  mix-blend-mode: lighten;  /* podes testar também screen ou multiply */
+}
+/* Card ESPECIAL */
+.price-card.special {
+  background: linear-gradient(180deg, #111, #000);
+  outline: 2px solid var(--gold);
+  box-shadow: 0 0 25px rgba(201,181,93,.3), 0 0 80px rgba(201,181,93,.15) inset;
+}
+
+/* Ponto de interrogação estilizado */
+.price-card .qm {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 96px;        /* bem grande */
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(201,181,93,.6), 0 0 40px rgba(201,181,93,.4);
+  animation: pulseQ 2s infinite;
+  display: inline-block;
+}
+
+/* animação leve para destacar */
+@keyframes pulseQ {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1.15); opacity: .8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+/* Card Especial */
+.price-card.special {
+  background: linear-gradient(180deg, #111, #000);
+  outline: 2px solid var(--gold);
+  box-shadow: 0 0 25px rgba(201,181,93,.3), 0 0 80px rgba(201,181,93,.15) inset;
+}
+
+/* Ponto de interrogação */
+.price-card .qm {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 96px;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(201,181,93,.7), 0 0 40px rgba(201,181,93,.5);
+  animation: pulseQ 2s infinite;
+  display: inline-block;
+}
+
+@keyframes pulseQ {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1.2); opacity: .85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+/* 4 colunas no desktop (>=1200px) */
+@media (min-width: 1200px){
+  #planos .row > [class^="col-"] {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+/* Preço: não cortar e caber no card */
+.price-card .price{
+  font-size: clamp(28px, 2.6vw, 44px);
+  line-height: 1.1;
+  letter-spacing: .5px;
+  word-break: keep-all;
+  overflow-wrap: anywhere;   /* quebra se for preciso */
+  white-space: normal;
+}
+
+/* No card ESPECIAL, deixa um pouco maior mas ainda seguro */
+.price-card.special .price{
+  font-size: clamp(32px, 3vw, 48px);
+  letter-spacing: .6px;
+}
+/* Visual exclusivo do ESPECIAL */
+.price-card.special{
+  position: relative;
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(201,181,93,.18), transparent 60%),
+    linear-gradient(180deg, #121212, #0d0d0d);
+  border: 1px solid rgba(201,181,93,.38);
+  box-shadow:
+    0 18px 44px rgba(201,181,93,.18),
+    inset 0 0 0 1px rgba(201,181,93,.10);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Hover especial com “brilho” e leve elevação */
+.price-card.special:hover{
+  transform: translateY(-3px);
+  box-shadow:
+    0 26px 60px rgba(201,181,93,.26),
+    inset 0 0 0 1px rgba(201,181,93,.16);
+}
+
+/* “?” grande, com brilho e animação de pulso */
+.price-card.special .qm{
+  display:inline-block;
+  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: clamp(72px, 7vw, 140px);
+  line-height: 1;
+  color: var(--gold);
+  filter: drop-shadow(0 6px 26px rgba(201,181,93,.36));
+  text-shadow:
+    0 0 12px rgba(201,181,93,.45),
+    0 0 28px rgba(201,181,93,.25);
+  animation: qmPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes qmPulse{
+  0%,100%{ transform: scale(1);   opacity: .95; }
+  50%    { transform: scale(1.06); opacity: 1;   }
+}
+
+/* Informação de “conteúdo revelado...” menor e discreta */
+.price-card.special .mystery .small{
+  color: #cbb982;
+  opacity: .7;
+}
+
+/* Botão do especial com foco/hover mais “luxo” */
+.price-card.special .btn.btn-gold{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.35),
+    0 12px 30px rgba(230,200,120,.35);
+}
+.price-card.special .btn.btn-gold:hover{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    0 18px 44px rgba(230,200,120,.45);
+}
+/* Garante uma base visual mais sólida pros cards */
+.price-card{
+  min-width: 260px;            /* segurança */
+  border-radius: 18px;
+}
+
+/* Ícones de check ficam mais alinhados */
+.price-card li .material-icons{
+  transform: translateY(1px);
+}
+/* ====== SHIMMER EXCLUSIVO PARA O ESPECIAL ====== */
+.price-card.special {
+  position: relative;
+  overflow: hidden;  /* garante que o brilho não sai para fora */
+}
+
+.price-card.special::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  opacity: 0;
+}
+
+/* Ao passar o mouse, o shimmer corre */
+.price-card.special:hover::after {
+  opacity: 1;
+  animation: shimmerMove 1.2s ease forwards;
+}
+
+@keyframes shimmerMove {
+  0%   { left: -75%; }
+  100% { left: 125%; }
+}
+/* ====== SHIMMER EXCLUSIVO PARA O ESPECIAL (LOOP) ====== */
+.price-card.special{
+  position:relative;
+  overflow:hidden;                /* não vazar brilho */
+  will-change: transform, opacity;
+}
+
+/* “Faixa” do brilho que cruza o card */
+.price-card.special::after{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-75%;
+  width:50%;
+  height:200%;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.35) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform:skewX(-25deg);
+  opacity:.0;
+
+  /* loop suave automático */
+  animation: shimmerLoop 5.2s ease-in-out infinite;
+}
+
+/* Ao passar o mouse: mais rápido e mais visível */
+.price-card.special:hover::after{
+  animation-duration:1.2s;
+  opacity:1;
+}
+
+/* Animação em loop */
+@keyframes shimmerLoop{
+  0%   { left:-85%; opacity:0; }
+  8%   { opacity:.9; }     /* aparece no início do “passar” */
+  50%  { left:110%; opacity:.35; }
+  92%  { opacity:.9; }     /* reforça no final */
+  100% { left:125%; opacity:0; }
+}
+
+/* Se o usuário preferir menos movimento, desativa o loop e mantém só no hover */
+@media (prefers-reduced-motion: reduce){
+  .price-card.special::after{
+    animation:none;
+    opacity:0;
+  }
+  .price-card.special:hover::after{
+    animation: shimmerLoop 1.2s ease forwards;
+    opacity:1;
+  }
+}
+/* Mantém o preço sempre em linha, sem quebrar */
+.price-card .price{
+  white-space: nowrap;        /* impede a quebra de linha */
+  font-size: 40px;            /* podes ajustar */
+  font-weight: 800;
+  color: var(--gold);
+  font-family: var(--font-display);
+  text-align: center;         /* centraliza */
+}
+/* Preço nunca quebra e escala de forma segura */
+.price-card .price{
+  white-space: nowrap;
+  font-size: clamp(28px, 2.6vw, 40px); /* ajusta automaticamente */
+  line-height: 1.1;
+}
+
+/* Se quiseres um ajuste fino só no card Especial */
+.price-card.special .price{
+  font-size: clamp(28px, 2.4vw, 38px);
+  letter-spacing: -0.2px;
+}
+.price-card .price {
+  white-space: nowrap;                  /* nunca quebra */
+  font-size: clamp(28px, 2.6vw, 40px);  /* responsivo */
+  line-height: 1.1;
+}
+.price-card.special .price {
+  font-size: clamp(28px, 2.4vw, 38px);
+}
+/* Abre mais a largura apenas na seção de planos */
+#planos.container {
+  max-width: 1600px !important;   /* 1480–1680 também funciona; 1600 é um bom meio-termo */
+}
+
+/* Mantém 4 cards por linha no desktop, com respiro */
+#planos .row { --bs-gutter-x: 2rem; }  /* espaçamento horizontal entre colunas */
+@media (min-width: 1200px){
+  #planos .col-lg-3 { flex: 0 0 25%; max-width: 25%; }  /* garante 4 colunas */
+}
+/* 1) Abre mais a largura do container só na seção de planos */
+#planos.container,
+#planos.container-lg,
+#planos.container-xl,
+#planos.container-xxl {
+  max-width: 1780px !important;   /* 1720~1840 também funciona; 1780 é um ótimo equilíbrio */
+}
+
+/* 2) Garante 4 colunas no desktop */
+@media (min-width: 1200px){
+  #planos .col-lg-3 {           /* use essa classe nas colunas dos cards (ver HTML abaixo) */
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+/* (Opcional) Dá um respiro entre as colunas */
+#planos .row { --bs-gutter-x: 2rem; }
+/* Garante que os 4 cards cabem lado a lado no desktop */
+#planos.container {
+  max-width: 1780px !important;   /* abre mais espaço horizontal */
+}
+
+/* Opcional: ajusta tamanho da tipografia do preço para não quebrar */
+#planos .price {
+  font-size: clamp(1.8rem, 2.3vw, 2.4rem);
+  line-height: 1.2;
+}
+/* Deixa o texto secreto em branco no pacote ESPECIAL */
+.price-card.special .mystery .small {
+  color: #fff !important;   /* branco total */
+  opacity: 0.9;             /* ligeiro suavizado (opcional) */
+}
+/* Ponto de interrogação do pacote ESPECIAL */
+.price-card.special .qm {
+  font-size: 4rem;                  /* tamanho grande */
+  color: var(--gold);               /* dourado */
+  text-shadow: 0 0 12px rgba(201,181,93,.8),
+               0 0 24px rgba(201,181,93,.6),
+               0 0 36px rgba(201,181,93,.4);
+  animation: pulseGlow 2.5s infinite ease-in-out;
+  display: inline-block;
+}
+
+/* Animação de brilho */
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 6px rgba(201,181,93,.6),
+                 0 0 12px rgba(201,181,93,.5),
+                 0 0 18px rgba(201,181,93,.4);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 16px rgba(201,181,93,1),
+                 0 0 32px rgba(201,181,93,.9),
+                 0 0 48px rgba(201,181,93,.7);
+    transform: scale(1.1);
+  }
+  100% {
+    text-shadow: 0 0 6px rgba(201,181,93,.6),
+                 0 0 12px rgba(201,181,93,.5),
+                 0 0 18px rgba(201,181,93,.4);
+    transform: scale(1);
+  }
+}
+/* Botão do pacote ESPECIAL */
+.price-card.special .btn-gold {
+  animation: pulseButton 3s infinite ease-in-out;
+  box-shadow: 0 0 12px rgba(201,181,93,.6),
+              0 0 20px rgba(201,181,93,.4);
+  transition: transform .3s ease;
+}
+
+.price-card.special .btn-gold:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(201,181,93,.8),
+              0 0 40px rgba(201,181,93,.6);
+}
+
+/* Animação de brilho no botão */
+@keyframes pulseButton {
+  0% {
+    box-shadow: 0 0 8px rgba(201,181,93,.5),
+                0 0 16px rgba(201,181,93,.3);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(201,181,93,1),
+                0 0 36px rgba(201,181,93,.8);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(201,181,93,.5),
+                0 0 16px rgba(201,181,93,.3);
+  }
+}
+/* Efeito do ponto de interrogação */
+.qm {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--gold);
+  animation: pulseQ 2.5s infinite ease-in-out;
+  display: inline-block;
+  text-shadow: 0 0 12px rgba(201,181,93,.8);
+}
+
+@keyframes pulseQ {
+  0%   { transform: scale(1);   text-shadow: 0 0 6px rgba(201,181,93,.4); }
+  50%  { transform: scale(1.25); text-shadow: 0 0 20px rgba(201,181,93,1); }
+  100% { transform: scale(1);   text-shadow: 0 0 6px rgba(201,181,93,.4); }
+}
+
+/* Texto do mistério */
+.price-card.special .mystery .small {
+  color: #fff !important;
+  text-shadow: 0 0 6px rgba(201,181,93,.6);
+}
+
+/* Botão do pacote ESPECIAL com pulso */
+.price-card.special .btn-gold {
+  animation: pulseButton 3s infinite ease-in-out;
+  box-shadow: 0 0 12px rgba(201,181,93,.6),
+              0 0 20px rgba(201,181,93,.4);
+  transition: transform .3s ease;
+}
+
+.price-card.special .btn-gold:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(201,181,93,.8),
+              0 0 40px rgba(201,181,93,.6);
+}
+
+@keyframes pulseButton {
+  0%   { box-shadow: 0 0 8px rgba(201,181,93,.5), 0 0 16px rgba(201,181,93,.3); }
+  50%  { box-shadow: 0 0 18px rgba(201,181,93,1), 0 0 36px rgba(201,181,93,.8); }
+  100% { box-shadow: 0 0 8px rgba(201,181,93,.5), 0 0 16px rgba(201,181,93,.3); }
+}
+.text-white {
+  color: #fff !important;
+}

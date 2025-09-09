@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>O CÓDIGO – ELA • A Mulher como Centro Universal de Energia</title>
+  <meta name="description" content="Programa de 8 semanas para mulheres: espiritualidade + imagem + ação. Clareza, presença e abundância com métricas ELA360 e EScore.">
+  <meta name="theme-color" content="#0b0b0d">
+  <link rel="icon" href="ela-logo.svg" type="image/svg+xml">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: { 900: '#0b0b0d', 800: '#121214' },
+            gold: { 50:'#FFF7E6',100:'#FCEFD1',300:'#EBD195',400:'#E1C26A',500:'#D8B35A',600:'#C79E44' },
+            rose: { 50:'#FFF1F5',100:'#FFE4EC',200:'#F9C9D6',300:'#F1A9BD' }
+          },
+          boxShadow: { glow: '0 0 40px rgba(216,179,90,.25)' },
+          fontFamily: { display: ['Cinzel','serif'], body: ['Inter','system-ui','sans-serif'] },
+          borderRadius: { xl2: '1.25rem' }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    body { background: radial-gradient(1200px 600px at 50% -100px, rgba(241,169,189,.08), transparent), #0b0b0d; }
+    .gold-text {
+      background: linear-gradient(180deg,#F7E9B4 0%, #E1C26A 40%, #C79E44 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); }
+    .btn-primary { background: linear-gradient(90deg,#E1C26A,#D8B35A); color:#1a1a1a; }
+    .btn-outline { border:1px solid #E1C26A; color:#EBD195; }
+    .grad-stroke { box-shadow: 0 0 0 1px rgba(225,194,106,.35) inset; }
+  </style>
+</head>
+<body class="font-body text-zinc-200 selection:bg-gold-500/30">
+  <!-- Top bar -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-base-900/70 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="ela-logo.svg" alt="Logótipo O CÓDIGO – ELA" class="h-8 w-auto">
+        <span class="font-display tracking-widest text-sm gold-text">O CÓDIGO – ELA</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#metodo" class="hover:text-gold-300">Método</a>
+        <a href="#curriculo" class="hover:text-gold-300">Currículo</a>
+        <a href="#paraquem" class="hover:text-gold-300">Para quem</a>
+        <a href="#pacotes" class="hover:text-gold-300">Pacotes</a>
+        <a href="#faq" class="hover:text-gold-300">FAQ</a>
+      </nav>
+      <!-- BOTÕES: voltar, área do aluno (NOVIDADE), inscrever-se -->
+      <div class="flex items-center gap-3">
+        <a id="cta-top-voltar" href="../o%20codigo%20site%20oficial/landing/index.html" class="btn-primary px-4 py-2 rounded-full text-sm font-semibold shadow-glow">Voltar ao O CÓDIGO</a>
+        <a id="cta-top-area" href="../portal/login.html" class="btn-outline px-4 py-2 rounded-full text-sm font-semibold">Área do Aluno</a>
+        <a id="cta-top-inscrever" href="../inscrever/index.html" class="btn-primary px-4 py-2 rounded-full text-sm font-semibold shadow-glow">Inscrever-se</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="max-w-7xl mx-auto px-4 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="font-display text-4xl md:text-6xl leading-tight">
+          <span class="gold-text">A Mulher</span> como Centro Universal de Energia
+        </h1>
+        <p class="mt-6 text-lg text-zinc-300">Um programa de 8 semanas para alinhar <strong>espiritualidade</strong>, <strong>imagem</strong> e <strong>ação</strong> — com rotinas simples, limites elegantes e um plano de abundância de 90 dias.</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#inscricao" class="btn-primary px-6 py-3 rounded-full font-semibold shadow-glow">Quero fazer o diagnóstico ELA360</a>
+          <a id="cta-whatsapp" href="https://wa.me/244923501576?text=Quero%20saber%20mais%20sobre%20O%20C%C3%93DIGO%20%E2%80%93%20ELA" class="btn-outline px-6 py-3 rounded-full font-semibold">Falar no WhatsApp</a>
+        </div>
+        <div class="mt-8 flex gap-6 text-sm text-zinc-400">
+          <div>Presença ≥ 80%</div>
+          <div>6/8 entregáveis</div>
+          <div>EScore semanal</div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="aspect-[4/3] rounded-xl2 card p-1 shadow-glow">
+          <div class="h-full w-full rounded-[1rem] bg-[url('https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg')] bg-cover bg-center" role="img" aria-label="Mulher com presença e força interior"></div>
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-rose-200/10 border border-rose-200/20 text-rose-200 px-4 py-2 rounded-full text-xs backdrop-blur">Comunidade segura • Confidencialidade</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Provas simples -->
+  <section class="py-6 border-y border-white/5 bg-base-800/60">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="card rounded-xl2 p-5"><div class="text-2xl font-display gold-text">500+</div><div class="text-sm mt-1">Mulheres impactadas</div></div>
+      <div class="card rounded-xl2 p-5"><div class="text-2xl font-display gold-text">95%</div><div class="text-sm mt-1">Satisfação</div></div>
+      <div class="card rounded-xl2 p-5"><div class="text-2xl font-display gold-text">8</div><div class="text-sm mt-1">Semanas guiadas</div></div>
+      <div class="card rounded-xl2 p-5"><div class="text-2xl font-display gold-text">90</div><div class="text-sm mt-1">Plano de dias de abundância</div></div>
+    </div>
+  </section>
+
+  <!-- Método -->
+  <section id="metodo" class="max-w-7xl mx-auto px-4 py-20">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="font-display text-3xl md:text-4xl gold-text">Triângulo ELA: Espiritualidade • Imagem • Ação</h2>
+        <p class="mt-4 text-zinc-300">Práticas diárias curtas, Círculo de Irmãs e Clínicas semanais. Medimos com <strong>ELA360</strong> e <strong>EScore</strong> para veres a tua evolução com clareza.</p>
+        <ul class="mt-6 space-y-3 text-zinc-300 list-disc list-inside">
+          <li>Ritual Matinal ELA (12–18’)</li>
+          <li>Técnica S.A.C. — Sentir • Assumir • Comunicar</li>
+          <li>Respiração 4-7-8, enraizamento e presença</li>
+        </ul>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="card rounded-xl2 p-6">
+          <h3 class="font-display text-xl gold-text">O que vais conquistar</h3>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li>Clareza de propósito e rotina estável</li>
+            <li>Autoimagem coerente (voz, postura, cor/forma)</li>
+            <li>Limites elegantes e comunicação segura</li>
+            <li>Plano de abundância (90 dias)</li>
+            <li>1 Projecto ELA com impacto real</li>
+          </ul>
+        </div>
+        <div class="card rounded-xl2 p-6">
+          <h3 class="font-display text-xl gold-text">Ética, segurança & inclusão</h3>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li>Cuidado informado pelo trauma</li>
+            <li>Consentimento claro e confidencialidade</li>
+            <li>Canal privado e encaminhamentos</li>
+            <li>Diversidade de fé e contextos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Currículo 8 semanas -->
+  <section id="curriculo" class="bg-base-800/40 border-y border-white/5 py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-display text-3xl md:text-4xl gold-text text-center">Currículo – 8 Semanas</h2>
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="card rounded-xl2 p-5"><h4 class="font-display gold-text">1. Raízes & Missão</h4><p class="mt-2 text-sm">Declaração de Missão ELA (150–250 palavras).</p></div>
+        <div class="card rounded-xl2 p-5"><h4 class="font-display gold-text">2. Imagem & Presença</h4><p class="mt-2 text-sm">Guia de Imagem (3 looks âncora) + voz e postura.</p></div>
+        <div class="card rounded-xl2 p-5"><h4 class="font-display gold-text">3. Emoções & Limites</h4><p class="mt-2 text-sm">Plano de Limites (3 não-negociáveis + frases-ponte).</p></div>
+        <div class="card rounded-xl2 p-5"><h4 class="font-display gold-text">4. Corpo & Vitalidade</h4><p class="mt-2 text-sm">Sono, nutrição simples, movimento e ciclo.</p></div>
+        <div class="card rounded-xl2 p-5"><h4 class="font-display gold-text">5. Relações & Parceria</h4><p class="mt-2 text-sm">Acordo de Parceria e ritual de reconhecimento.</p></div>
+        <div class="card rounded-xl2 p-5"><h4 class="font-display gold-text">6. Liderança & Finanças</h4><p class="mt-2 text-sm">Mapa de Abundância (ofertas, metas, canais).</p></div>
+        <div class="card rounded-xl2 p-5"><h4 class="font-display gold-text">7. Impacto & Serviço</h4><p class="mt-2 text-sm">Projecto ELA + ação pública mínima.</p></div>
+        <div class="card rounded-xl2 p-5"><h4 class="font-display gold-text">8. Consagração & Legado</h4><p class="mt-2 text-sm">Plano 12 meses + pacto de irmandade.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Para quem -->
+  <section id="paraquem" class="max-w-7xl mx-auto px-4 py-20">
+    <h2 class="font-display text-3xl md:text-4xl gold-text text-center">Para quem é</h2>
+    <p class="text-center mt-3 text-zinc-300">Personas-alvo — para copy, dinâmicas e exemplos.</p>
+    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card rounded-xl2 p-6"><h3 class="font-display text-xl gold-text">Iniciadora (18–28)</h3><p class="mt-2 text-sm">Primeira carreira/negócio, identidade e limites.</p></div>
+      <div class="card rounded-xl2 p-6"><h3 class="font-display text-xl gold-text">Construtora (25–40)</h3><p class="mt-2 text-sm">Parceria/filhos; gestão de tempo e energia.</p></div>
+      <div class="card rounded-xl2 p-6"><h3 class="font-display text-xl gold-text">Lídera (30–50)</h3><p class="mt-2 text-sm">Equipas/projetos; influência e comunicação.</p></div>
+      <div class="card rounded-xl2 p-6"><h3 class="font-display text-xl gold-text">Renascente 40+</h3><p class="mt-2 text-sm">Transição de ciclo; legado e abundância.</p></div>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="bg-base-800/40 border-y border-white/5 py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-display text-3xl md:text-4xl gold-text text-center">Histórias Reais</h2>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <article class="card rounded-xl2 p-6 text-sm">“Alinhei a minha imagem e os meus limites. A energia estabilizou e a minha relação melhorou.” <div class="mt-3 text-zinc-400">— Maria, 32</div></article>
+        <article class="card rounded-xl2 p-6 text-sm">“Defini um plano simples de 90 dias e lancei a minha primeira oferta. Senti-me segura.” <div class="mt-3 text-zinc-400">— Ana, 41</div></article>
+        <article class="card rounded-xl2 p-6 text-sm">“As clínicas e a técnica S.A.C. mudaram a minha forma de comunicar.” <div class="mt-3 text-zinc-400">— Joana, 28</div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pacotes -->
+  <section id="pacotes" class="max-w-7xl mx-auto px-4 py-20">
+    <h2 class="font-display text-3xl md:text-4xl gold-text text-center">Escolhe o teu pacote</h2>
+    <p class="text-center mt-3 text-zinc-300">Vagas limitadas • Bolsas sociais 15% (40–60% de redução)</p>
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+      <!-- Standard -->
+      <div class="card rounded-xl2 p-6 flex flex-col">
+        <div class="font-display text-2xl gold-text">Standard</div>
+        <div class="mt-2 text-3xl font-bold gold-text">180.000 AKZ</div>
+        <ul class="mt-4 space-y-2 text-sm flex-1">
+          <li>8 semanas • grupo VIP</li>
+          <li>Clínicas (60') semanais</li>
+          <li>Materiais completos</li>
+          <li>Comunidade & replays</li>
+        </ul>
+        <a href="#inscricao" class="mt-6 btn-primary px-5 py-3 rounded-full text-center font-semibold">Escolher Standard</a>
+      </div>
+      <!-- VIP -->
+      <div class="card rounded-xl2 p-6 ring-2 ring-gold-500/40 shadow-glow flex flex-col">
+        <div class="font-display text-2xl gold-text">VIP</div>
+        <div class="mt-2 text-3xl font-bold gold-text">320.000 AKZ</div>
+        <ul class="mt-4 space-y-2 text-sm flex-1">
+          <li>Tudo do Standard</li>
+          <li>+ 2 sessões 1:1</li>
+          <li>+ Lookbook de imagem (3 peças)</li>
+        </ul>
+        <a href="#inscricao" class="mt-6 btn-primary px-5 py-3 rounded-full text-center font-semibold">Escolher VIP</a>
+      </div>
+      <!-- Mentoria -->
+      <div class="card rounded-xl2 p-6 flex flex-col">
+        <div class="font-display text-2xl gold-text">Mentoria Líderes</div>
+        <div class="mt-2 text-3xl font-bold gold-text">520.000 AKZ</div>
+        <ul class="mt-4 space-y-2 text-sm flex-1">
+          <li>Tudo do VIP</li>
+          <li>+ 3 sessões extra</li>
+          <li>+ Revisão de Projecto de Impacto</li>
+        </ul>
+        <a href="#inscricao" class="mt-6 btn-primary px-5 py-3 rounded-full text-center font-semibold">Escolher Mentoria</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-base-800/40 border-y border-white/5 py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="font-display text-3xl md:text-4xl gold-text text-center">FAQ</h2>
+      <div class="mt-10 grid md:grid-cols-2 gap-6 text-sm">
+        <div class="card rounded-xl2 p-5"><h4 class="font-semibold">E se eu faltar a um encontro?</h4><p class="mt-2 text-zinc-300">Assiste ao replay e envia uma síntese de 10 linhas.</p></div>
+        <div class="card rounded-xl2 p-5"><h4 class="font-semibold">Não tenho crença religiosa.</h4><p class="mt-2 text-zinc-300">O programa é inclusivo; adaptamos a linguagem à tua realidade.</p></div>
+        <div class="card rounded-xl2 p-5"><h4 class="font-semibold">Tenho ansiedade.</h4><p class="mt-2 text-zinc-300">Usa as práticas de regulação e procura apoio clínico se necessário.</p></div>
+        <div class="card rounded-xl2 p-5"><h4 class="font-semibold">Há certificação?</h4><p class="mt-2 text-zinc-300">Sim, com critérios de presença, entregáveis e ética ELA.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inscrição / Contacto -->
+  <section id="inscricao" class="max-w-4xl mx-auto px-4 py-20">
+    <div class="card rounded-xl2 p-8 md:p-10">
+      <h2 class="font-display text-3xl gold-text">Pronta para começar?</h2>
+      <p class="mt-3 text-zinc-300">Preenche o formulário de interesse ou fala connosco no WhatsApp. Oferecemos 15% de bolsas sociais (redução 40–60%) mediante critérios simples.</p>
+      <form class="mt-8 grid md:grid-cols-2 gap-4" onsubmit="event.preventDefault(); alert('Obrigada! Entraremos em contacto pelo WhatsApp/email.');">
+        <input class="bg-transparent border border-white/10 rounded-xl2 px-4 py-3 outline-none focus:border-gold-500/60" placeholder="Nome completo" required />
+        <input class="bg-transparent border border-white/10 rounded-xl2 px-4 py-3 outline-none focus:border-gold-500/60" placeholder="Email" type="email" required />
+        <input class="bg-transparent border border-white/10 rounded-xl2 px-4 py-3 outline-none focus:border-gold-500/60" placeholder="WhatsApp" />
+        <select class="bg-transparent border border-white/10 rounded-xl2 px-4 py-3 outline-none focus:border-gold-500/60" aria-label="Preferência de participação"><option class="bg-base-900">Preferência: Presencial</option><option class="bg-base-900">Preferência: Online</option></select>
+        <textarea class="md:col-span-2 bg-transparent border border-white/10 rounded-xl2 px-4 py-3 outline-none focus:border-gold-500/60" rows="4" placeholder="O que queres fortalecer primeiro? (Limites, Imagem, Energia)"></textarea>
+        <div class="md:col-span-2 flex flex-wrap gap-4">
+          <button type="submit" class="btn-primary px-6 py-3 rounded-full font-semibold">Enviar interesse</button>
+          <a id="cta-whatsapp-bottom" href="https://wa.me/244923501576?text=Tenho%20interesse%20no%20programa%20ELA" class="btn-outline px-6 py-3 rounded-full font-semibold">Falar no WhatsApp</a>
+        </div>
+      </form>
+    </div>
+    <div class="text-center text-xs text-zinc-500 mt-6">Ao enviar, aceitas os Termos &amp; Privacidade. Comunidade segura: respeito, confidencialidade e opt-out em práticas corporais.</div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-sm text-zinc-400">© 2025 O CÓDIGO – ELA. Todos os direitos reservados.</div>
+      <div class="flex items-center gap-4 text-sm">
+        <a href="mailto:info@pintosamuel.com" class="hover:text-gold-300">info@pintosamuel.com</a>
+        <a href="tel:+244923501576" class="hover:text-gold-300">+244 923 501 576</a>
+        <a href="https://instagram.com/pinto_samuel02" class="hover:text-gold-300" target="_blank" rel="noreferrer">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for on-page anchors
+    document.querySelectorAll('a[href^=\"#\"]').forEach(a=>{
+      a.addEventListener('click',e=>{ const id=a.getAttribute('href'); if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth'});} });
+    });
+  </script>
+</body>
+</html>
